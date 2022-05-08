@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDITAR CRUD</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <!-- boxicons-->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+      .btn-guardar{
+        width: 100%;
+        padding: 15px;
+        background-color: #20c997;
+        border: 0;
+        box-sizing: border-box;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: large;
+        color: #ffffff;
+        margin-top: 15px;
+      }
+      .btn-guardar:hover,.btn-guardar:active{
+          color: #fff;
+          background-color: #13795b;
+          border-color: #13795b;
+      }
+      .btn-guardar:focus{
+          box-shadow: 0 0 0 3px rgba(121,82,179,0.25)
+      }
+
+      .btn-success{
+          margin: 23px;
+      }
+
+      .btn-cancel{
+          margin: 23px;
+          color: #fff;
+          background-color: #c22929;
+          border-color: #c22929;
+      }
+
+      #contenedor{
+          padding: 15px;
+      }
+      #contenedor2{
+          padding: 15px;
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand">CRUD</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index-2.html">Home</a>
+              </li>
+            </ul>
+          </div>
+          <a href="/login.html">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAdtJREFUSEuNVtt1QjEMk7IAbEA7QRmho9DJYBMYBTboBFGP805ucikfnOI8ZMmyU2LyIQB18W2kLLdLBKh0Nv1ty0BZaHfEK/bB3gPbjSHf1fdbmCmDGowAI6+sT9on6RvCFcTHTNIh9gTwQ/Jhx6NE008ENmwv2aGT4fYHlpEnyc8JQL00kEjkvBR/kqVm0QWDPhCU9zrSkis1mLoiXTEDaFVtLRcBBNKFZArjbS617BkgJdUkvq2ffGJbGbQFqDCSbiQvtlpoB4kGGYfjBSDpuZFI0hHAHdA503x3aVsPYxuK60iLd0WT/BniHcQx6OhcKFTf1XPGWbeebQMgL5PjOjo2GrH9bnfUYmaAyKArctRdSgCWcRIu6L/wfo4X6ybLtEVOEnUNdQbwAHDofN8NkmF4DONradNMPBXZQL4su3ZGbRt+O+yWNRgrKfkb6S52RegDc4Q5o2vgYURSmEi074rSBwKSqfpGGzJrGaRZNNAsP9um88HR7Sxa2Xcu0fRhqUEpAsTuXz0yMV4arXby9vaRhOR/IR6m9i0+jv6Oe/QiXXg7/jvs7MG5gTj1Tpo24AvQhXTmxMm4Xs3tnfjec7vzog3u2hlK017p/qsoZVgVcPmu9m0xYfkHovEtMUKMpP0AAAAASUVORK5CYII="/>
+          </a>
+        </div>
+      </nav>
+
+    <div class="container" class="bg-success" id="contenedor">
+      
+        
+        <div class="shadow-lg pb-3 mb-5 bg-body rounded" id="contenedor2">
+          <h4>Editar Campeón (<%= crud.name %>)</h4>
+          <form action="/update/<%= crud._id %>" method="POST" id="add-form" enctype="multipart/form-data">
+            <div class="col-md-6">
+              <label for="name" class="form-label">Nombre</label>
+              <input id="name" name="name" type="text" class="form-control" value="<%= crud.name %>" required>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="rol" class="form-label">Rol</label>
+              <input id="rol" name="rol" type="text" class="form-control" value="<%= crud.rol %>" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="maestria" class="form-label">Maestría</label>
+              <input id="maestria" name="maestria" type="number" class="form-control" value="<%= crud.maestria %>" required>
+            </div>
+
+            <input type="submit" name="submit" class="w-40 btn btn-success btn-lg" value="Actualizar"/>
+            <button href="" class="w-40 btn btn-cancel btn-lg">Cancelar</button>
+          </form>
+        </div>
+
+    </div>
+  </body>
+</html>
